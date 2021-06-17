@@ -1,7 +1,8 @@
 import pytest
 import sys
 sys.path.append('src')
-from chess.pieces import Colour, King
+from chess.utility import Colour
+from chess.pieces import King
 
 king = King(Colour.BLACK)
 

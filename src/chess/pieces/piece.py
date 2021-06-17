@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from chess.pieces.colour import Colour
+from chess.utility import Colour
 
 class Piece(metaclass=ABCMeta):
     def __init__(self, colour: Colour):
