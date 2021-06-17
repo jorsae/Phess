@@ -1,5 +1,5 @@
 import re
-from chess.utility import Colour, BoardPiece
+from chess.utility import Colour, BoardPiece, MoveHistory
 from chess.pieces import Pawn, Knight, Bishop, Rook, Queen, King
 # from model.piece import *
 # from model.interface.move_history import MoveHistory
@@ -104,14 +104,13 @@ class FenParser:
         if en_passant == '-':
             return None
         else:
-            return None
             chars = 'abcdefgh' #TODO: This is ugly
             rank = int(chars.index(en_passant[:1]))
             file = 8 - int(en_passant[1:])
-            # if file == 2:
-            #     return MoveHistory((rank, file - 1), (rank, file + 1))
-            # else:
-            #     return MoveHistory((rank, file + 1), (rank, file - 1))
+            if file == 2:
+                return MoveHistory((rank, file - 1), (rank, file + 1))
+            else:
+                return MoveHistory((rank, file + 1), (rank, file - 1))
     
     def parse_integer(self, text):
         try:
